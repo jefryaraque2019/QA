@@ -6,6 +6,7 @@ pipeline {
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -14,8 +15,17 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                sh 'mvn clean test'
+                sh 'mvn clean verify'
             }
+        }
+
+    }
+
+    post {
+        always {
+            junit 'target/surefire-reports/*.xml'
+
+            archiveArtifacts artifacts: 'target/site/serenity/**/*', fingerprint: true
         }
     }
 }
