@@ -1,4 +1,4 @@
-package com.swag.pe.definitions;
+package com.swag.pe.definitions.login;
 
 import com.swag.pe.steps.login.LoginStep;
 import com.swag.pe.steps.validations.ValidationStep;
